@@ -49,8 +49,8 @@ def index():
 
             client.write_points(data, database=database)
 
-
-            return render_template('submit.html', feedback=, color="green")
+            feedback = "wrote data to database"
+            return render_template('submit.html', feedback=feedback, color="green")
         else:
             feedback = 'value is not numeric or decimal'
             return render_template('submit.html', feedback=feedback, color="red")
