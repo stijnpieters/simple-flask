@@ -33,8 +33,12 @@ def index():
                      }
                 }
                 ]
+            try:
+                client.write_points(data)
+            except:
+                feedback = "could not write to db"
+                return render_template('submit.html', feedback=feedback, color="red")
 
-            client.write_points(data)
 
             feedback = "wrote data to database"
             return render_template('submit.html', feedback=feedback, color="green")
