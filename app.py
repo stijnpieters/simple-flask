@@ -6,7 +6,7 @@ import os, re
 load_dotenv()
 
 INFLUXIP = os.getenv('INFLUXHOST')
-INFLXUPORT = os.getenv('INFLUXPORT')
+INFLUXPORT = os.getenv('INFLUXPORT')
 USER = os.getenv('USERNAME')
 PASS = os.getenv('PASSWORD')
 DATABASE = os.getenv('DATABASE')
@@ -25,7 +25,7 @@ data = [
 
 
 app = Flask(__name__)
-client = InfluxDBClient(host=INFLUXIP, port=INFLUXPORT, database=database, username=USER, password=PASS)
+client = InfluxDBClient(host=INFLUXIP, port=INFLUXPORT, database=DATABASE, username=USER, password=PASS)
 
 
 @app.route('/', methods=['GET', 'POST'])
@@ -47,7 +47,7 @@ def index():
                 }
                 ]
 
-            client.write_points(data, database=database)
+            client.write_points(data)
 
             feedback = "wrote data to database"
             return render_template('submit.html', feedback=feedback, color="green")
