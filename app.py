@@ -33,6 +33,7 @@ def index():
     if request.method == 'POST':
         value = request.form['value']
         if re.search("^\d+[\.\,]?\d*$", value) != None:
+            
             # Code for InfluxDB here
             data = [
                 {
@@ -46,13 +47,13 @@ def index():
                 }
                 ]
 
-
             client.write_points(data, database=database)
 
-            return render_template('submit.html')
+
+            return render_template('submit.html', feedback=, color="green")
         else:
             feedback = 'value is not numeric or decimal'
-            return render_template('submit.html', feedback=feedback)
+            return render_template('submit.html', feedback=feedback, color="red")
     else:
         return render_template('submit.html')
 
