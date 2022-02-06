@@ -1,7 +1,31 @@
 from flask import Flask, render_template, request, url_for, redirect, flash
-import re
+from influxdb import InfluxDBClient
+from dotenv import load_dotenv
+import os, re
+
+load_dotenv()
+
+INFLUXIP = os.getenv('INFLUXHOST')
+INFLXUPORT = os.getenv('INFLUXPORT')
+USER = os.getenv('USERNAME')
+PASS = os.getenv('PASSWORD')
+DATABASE = os.getenv('DATABASE')
+
+data = [
+                {
+                 "measurement": "your_measurement",
+                 "tags": {
+                     "key": "value"
+                     },
+                 "fields": {
+                     "value": "sample_value"
+                     }
+                }
+                ]
+
 
 app = Flask(__name__)
+client = InfluxDBClient(host=INFLUXIP, port=INFLUXPORT, database=database, username=USER, password=PASS)
 
 
 @app.route('/', methods=['GET', 'POST'])
@@ -10,7 +34,20 @@ def index():
         value = request.form['value']
         if re.search("^\d+[\.\,]?\d*$", value) != None:
             # Code for InfluxDB here
-            
+            data = [
+                {
+                 "measurement": "your_measurement",
+                 "tags": {
+                     "key": "value"
+                     },
+                 "fields": {
+                     "value": value
+                     }
+                }
+                ]
+
+
+            client.write_points(data, database=database)
 
             return render_template('submit.html')
         else:
