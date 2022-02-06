@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>{% block title %} Submit page {% endblock %}</h1>
+    <form method="post">
+        <div class="form-group">
+            <label for="content">Content</label>
+            <input type="text" name="value" class="form-control"></input>
+        </div>
+
+        <div class="form-group">
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+        
+        {% if feedback %}
+        <div style="color: red; font-size: 2em;">{{ feedback }}</div>
+        {% endif %}
+          
+    </form>
+{% endblock %}
+
