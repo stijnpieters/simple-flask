@@ -25,7 +25,7 @@ data = [
 
 
 app = Flask(__name__)
-client = InfluxDBClient(host=INFLUXIP, port=INFLUXPORT, database=database, username=USER, password=PASS)
+client = InfluxDBClient(host=INFLUXIP, port=INFLUXPORT, database=DATABASE, username=USER, password=PASS)
 
 
 @app.route('/', methods=['GET', 'POST'])
