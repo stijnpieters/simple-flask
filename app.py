@@ -6,7 +6,7 @@ import os, re
 load_dotenv()
 
 INFLUXIP = os.getenv('INFLUXHOST')
-INFLXUPORT = os.getenv('INFLUXPORT')
+INFLUXPORT = os.getenv('INFLUXPORT')
 USER = os.getenv('USERNAME')
 PASS = os.getenv('PASSWORD')
 DATABASE = os.getenv('DATABASE')
