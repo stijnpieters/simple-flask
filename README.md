@@ -4,6 +4,7 @@
 git clone https://github.com/stijnpieters/simple-flask.git
 ```
 Edit app.py with logic (e.g. to write to database)
+
 additionally: add the required pip packages to requirements.txt
 
 ## Docker
