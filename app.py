@@ -8,7 +8,6 @@ app = Flask(__name__)
 def index():
     if request.method == 'POST':
         value = request.form['value']
-        print(re.search("^\d+[\.\,]?\d*$", value))
         if re.search("^\d+[\.\,]?\d*$", value) != None:
             # Code for InfluxDB here
             
@@ -16,7 +15,6 @@ def index():
             return render_template('submit.html')
         else:
             feedback = 'value is not numeric or decimal'
-            print(feedback)
             return render_template('submit.html', feedback=feedback)
     else:
         return render_template('submit.html')
