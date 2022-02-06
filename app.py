@@ -11,19 +11,6 @@ USER = os.getenv('USERNAME')
 PASS = os.getenv('PASSWORD')
 DATABASE = os.getenv('DATABASE')
 
-data = [
-                {
-                 "measurement": "your_measurement",
-                 "tags": {
-                     "key": "value"
-                     },
-                 "fields": {
-                     "value": "sample_value"
-                     }
-                }
-                ]
-
-
 app = Flask(__name__)
 client = InfluxDBClient(host=INFLUXIP, port=INFLUXPORT, database=DATABASE, username=USER, password=PASS)
 
